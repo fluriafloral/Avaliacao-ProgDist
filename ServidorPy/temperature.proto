@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package temperature;
+
+service TemperatureConverter {
+  rpc CelsiusToFahrenheit (TemperatureRequest) returns (TemperatureResponse) {}
+  rpc FahrenheitToCelsius (TemperatureRequest) returns (TemperatureResponse) {}
+  rpc CelsiusToKelvin (TemperatureRequest) returns (TemperatureResponse) {}
+  rpc KelvinToCelsius (TemperatureRequest) returns (TemperatureResponse) {}
+  rpc KelvinToFahrenheit (TemperatureRequest) returns (TemperatureResponse) {}
+  rpc FahrenheitToKelvin (TemperatureRequest) returns (TemperatureResponse) {}
+}
+
+message TemperatureRequest {
+  double temperature = 1;
+  string unit = 2;
+}
+
+message TemperatureResponse {
+  double temperature = 1;
+}
