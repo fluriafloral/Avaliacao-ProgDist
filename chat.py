@@ -1,30 +1,46 @@
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-channel = connection.channel()
-chat = channel.queue_declare(queue='principal', durable=True)
-chat1 = channel.queue_declare(queue='segundo_canal', durable=True)
-chat2 = channel.queue_declare(queue='canal_do_vasco', durable=True)
+connection = None
+
+def connect(queue):
+    global connection
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue=queue, durable=True)
+
+    return channel
+
+def release():
+    global connection
+    if not connection == None:
+        if connection.is_open:
+            connection.close()
+        connection = None
 
 queues = ['principal', 'segundo_canal', 'canal_do_vasco']
 
 def display_messages(queue):
     print()
 
-    count = 0
-    for method, properties, body in channel.consume(queue):
-        print(body)
-        count += 1
-        if method.delivery_tag == count:
-            break
+    print("Aqui estão listadas as mensagens do chat %s" % queue)
+    print("Pressione ctrl+c para voltar ao menu de opções\n")
 
-    chat_menu(queue)
+    channel = connect(queue)
+
+    try:
+        for method, properties, body in channel.consume(queue):
+            print("[x] ", body)
+    except KeyboardInterrupt:
+        release()
+        chat_menu(queue)
 
 def send_message(queue):
     print()
 
     message = input("Digite a mensagem: ")
     message = usr + " : " + message
+
+    channel = connect(queue)
 
     channel.basic_publish(
     exchange='',
@@ -36,6 +52,7 @@ def send_message(queue):
 
     print("Mensagem enviada com sucesso!")
 
+    release()
     chat_menu(queue)
 
 def chat_menu(queue):
@@ -92,7 +109,7 @@ def initial_menu():
     if command == '1':
         list_menu()
     elif command == '2':
-        connection.close()
+        release()
         return 0
     else:
         print()
