@@ -31,7 +31,7 @@ chat5 [usuario2,usuario3,usuario4,usuario5,usuario7,usuario8,usuario10]
   -Instalar a biblioteca pika para python (comando para instalar a bilbioteca pelo terminal do linux: pip install pika).
   
   
-  -Clonar este repositório.
+  -Clonar este repositorio.
   
 ## Instruções para execução:
   No terminal, acesse a pasta onde estão os arquivos e execute:
@@ -45,10 +45,10 @@ chat5 [usuario2,usuario3,usuario4,usuario5,usuario7,usuario8,usuario10]
   
   Para cada usuario que queira utilizar executar o arquivo nome.py
   
-  O arquivo chat.py e usuarios_chats.py tem que estar no mesmo diretorio
+  O arquivo chat.py e usuarios_chats.py tem que estar no mesmo diretorio.
   
   Todos os chats possuem ao menos 4 usuarios, cada chat é uma exchange no rabbitmq e cada usuario possui uma queue, com 10 usuarios no sistemas e 5 chats distintos temos 5 exchanges(1 para cada grupo de chat) e 10 filas (uma para cada usuario).
   
-  É utilizado o meio fannout para enviar as mensagens, produtores enviam menssagens em fannout para as exchanges e cada usuario consome em sua propria queue(fila)
+  É utilizado o meio fannout para enviar as mensagens, produtores enviam menssagens em fannout para as exchanges e cada usuario consome em sua propria queue(fila).
   
-  Os usuarios e chats estão pré definidos não sendo possivel adicionar novos usuarios ou chats no periodo da execução
+  Os usuarios e chats estão pré definidos não sendo possivel adicionar novos usuarios ou chats no periodo da execução.
