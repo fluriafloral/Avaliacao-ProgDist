@@ -1,6 +1,20 @@
 
 # Rabbitmq Chat Aplication
   aplicação simple usando o rabbitmq para simular um chat
+  
+  
+## Distribuição do chat e usuarios:
+chat1 [usuario1, usuario3, usuario6, usuario10]
+
+chat2 [usuario1, usuario2, usuario3, usuario5, usuario7, usuario8, usuario9, usuario10]
+
+chat3 [usuario1,usuario3,usuario4,usuario6,usuario7,usuario8]
+
+chat4 [usuario2,usuario3,usuario4,usuario5,usuario6,usuario9]
+
+chat5 [usuario2,usuario3,usuario4,usuario5,usuario7,usuario8,usuario10]
+
+
 ## Instruções:
   pré requisitos
   
