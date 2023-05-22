@@ -2,7 +2,7 @@
 # Rabbitmq Chat Aplication
   aplicação simple usando o rabbitmq para simular um chat
 ## Instruções:
-  instalar a biblioteca pika, para fazer isso no terminal execute o seguinte comando:
+  instalar a biblioteca pika, para fazer isso no terminal execute o seguinte comando
   pip install pika
   pré requisito ter instalado o rabbitmq na maquina
   
